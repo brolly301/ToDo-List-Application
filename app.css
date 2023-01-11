@@ -1,5 +1,27 @@
+body {
+  background-color: rgb(146, 146, 241);
+  font-family: "Open Sans";
+}
+
 h1 {
   font-size: 50px;
+}
+
+#input {
+  width: 220px;
+  height: 20px;
+  margin-bottom: 20px;
+}
+
+#submit {
+  color: white;
+  background-color: rgb(40, 40, 41);
+  height: 24px;
+  border-radius: 10%;
+}
+
+#submit:hover {
+  background-color: rgb(43, 131, 51);
 }
 
 #mainDiv {
