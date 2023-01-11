@@ -1,31 +1,37 @@
 const form = document.querySelector("form");
 const input = document.querySelector("input");
-const ul = document.querySelector("ul");
+const list = document.querySelector("ul");
 const inputValidation = document.getElementById("input");
 
+//Creates the event listener for the form and the submit button and holds all the functions
 function createList() {
   form.addEventListener("submit", function (e) {
     e.preventDefault();
     isEmpty();
+    deleteFunction();
   });
 }
 
+//Checks if the input box is empty, if so it will alert the user of an error,
+//otherwise the task will be added to the list
 function isEmpty() {
   inputValue = input.value;
-  li = document.createElement("li");
+  task = document.createElement("li");
+  task.id = "task";
 
   if (inputValidation !== null && inputValidation.value === "") {
     alert("You have not entered a task. Please enter one to continue.");
   } else {
-    ul.appendChild(li);
-    li.innerText = `${inputValue}`;
-    li.appendChild(confirmButton());
-    li.appendChild(deleteButton());
-    li.appendChild(editButton());
+    list.appendChild(task);
+    task.innerText = `${inputValue}`;
+    task.appendChild(confirmButton());
+    task.appendChild(deleteButton());
+    task.appendChild(editButton());
     input.value = "";
   }
 }
 
+//Creates delete icon
 function deleteButton() {
   icon = document.createElement("i");
   icon.className = "material-symbols-outlined";
@@ -34,6 +40,7 @@ function deleteButton() {
   return icon;
 }
 
+//Creates confirm icon
 function confirmButton() {
   icon = document.createElement("i");
   icon.className = "material-symbols-outlined";
@@ -42,12 +49,23 @@ function confirmButton() {
   return icon;
 }
 
+//Creates edit icon
 function editButton() {
   icon = document.createElement("i");
   icon.className = "material-symbols-outlined";
-  icon.innerHTML = "edit";
+  icon.innerHTML = "edit_note";
   icon.id = "edit";
   return icon;
+}
+
+//Deletes the task from the list
+function deleteFunction() {
+  const deleteButton = document.querySelectorAll("#delete");
+  for (let i = 0; i < deleteButton.length; i++) {
+    deleteButton[i].onclick = function () {
+      this.parentElement.remove();
+    };
+  }
 }
 
 createList();
