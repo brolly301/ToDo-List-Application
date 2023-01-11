@@ -10,6 +10,7 @@ function createList() {
     isEmpty();
     deleteFunction();
     editFunction();
+    confirmFunction();
   });
 }
 
@@ -65,16 +66,31 @@ function deleteFunction() {
   const deleteButton = document.querySelectorAll("#delete");
   for (let i = 0; i < deleteButton.length; i++) {
     deleteButton[i].onclick = function () {
-      this.parentElement.remove();
+      response = confirm("Are you sure?");
+      if (response) {
+        this.parentElement.remove();
+      }
     };
   }
 }
 
+//Allows for the task to be edited
 function editFunction() {
   const editButton = document.querySelectorAll("#edit");
   for (let i = 0; i < editButton.length; i++) {
     editButton[i].onclick = function () {
       this.parentElement.contentEditable = true;
+    };
+  }
+}
+
+//Confirms the task and updates its CSS
+function confirmFunction() {
+  const confirmButton = document.querySelectorAll("#confirm");
+  for (let i = 0; i < confirmButton.length; i++) {
+    confirmButton[i].onclick = function () {
+      this.parentElement.style.textDecoration = "line-through";
+      this.parentElement.style.backgroundColor = "green";
     };
   }
 }
