@@ -9,6 +9,7 @@ function createList() {
     e.preventDefault();
     isEmpty();
     deleteFunction();
+    editFunction();
   });
 }
 
@@ -23,7 +24,7 @@ function isEmpty() {
     alert("You have not entered a task. Please enter one to continue.");
   } else {
     list.appendChild(task);
-    task.innerText = `${inputValue}`;
+    task.innerText = `${inputValue} `;
     task.appendChild(confirmButton());
     task.appendChild(deleteButton());
     task.appendChild(editButton());
@@ -37,6 +38,7 @@ function deleteButton() {
   icon.className = "material-symbols-outlined";
   icon.innerHTML = "delete";
   icon.id = "delete";
+  icon.contentEditable = false;
   return icon;
 }
 
@@ -64,6 +66,15 @@ function deleteFunction() {
   for (let i = 0; i < deleteButton.length; i++) {
     deleteButton[i].onclick = function () {
       this.parentElement.remove();
+    };
+  }
+}
+
+function editFunction() {
+  const editButton = document.querySelectorAll("#edit");
+  for (let i = 0; i < editButton.length; i++) {
+    editButton[i].onclick = function () {
+      this.parentElement.contentEditable = true;
     };
   }
 }
