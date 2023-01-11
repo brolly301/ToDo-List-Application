@@ -29,7 +29,20 @@ h1 {
 }
 
 #ul {
-  text-align: center;
+  text-align: left;
   display: table;
   margin: 0 auto;
+  padding-right: 235px;
+}
+
+#delete:hover {
+  color: red;
+}
+
+#edit:hover {
+  color: rgb(255, 153, 0);
+}
+
+#confirm:hover {
+  color: green;
 }

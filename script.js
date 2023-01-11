@@ -19,8 +19,35 @@ function isEmpty() {
   } else {
     ul.appendChild(li);
     li.innerText = `${inputValue}`;
+    li.appendChild(confirmButton());
+    li.appendChild(deleteButton());
+    li.appendChild(editButton());
     input.value = "";
   }
+}
+
+function deleteButton() {
+  icon = document.createElement("i");
+  icon.className = "material-symbols-outlined";
+  icon.innerHTML = "delete";
+  icon.id = "delete";
+  return icon;
+}
+
+function confirmButton() {
+  icon = document.createElement("i");
+  icon.className = "material-symbols-outlined";
+  icon.innerHTML = "check_circle";
+  icon.id = "confirm";
+  return icon;
+}
+
+function editButton() {
+  icon = document.createElement("i");
+  icon.className = "material-symbols-outlined";
+  icon.innerHTML = "edit";
+  icon.id = "edit";
+  return icon;
 }
 
 createList();
