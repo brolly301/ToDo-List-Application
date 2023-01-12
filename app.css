@@ -7,6 +7,11 @@ h1 {
   font-size: 50px;
 }
 
+#formDiv {
+  display: inline-block;
+  text-align: left;
+}
+
 #input {
   width: 220px;
   height: 20px;
@@ -29,10 +34,13 @@ h1 {
 }
 
 #ul {
-  text-align: left;
-  display: table;
-  margin: 0 auto;
-  padding-right: 185px;
+  position: relative;
+  display: inline-block;
+  list-style: none;
+  width: 100%;
+  align-items: center;
+  margin: auto;
+  padding: 0;
 }
 
 #delete:hover {

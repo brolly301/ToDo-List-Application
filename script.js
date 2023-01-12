@@ -7,6 +7,7 @@ const inputValidation = document.getElementById("input");
 function createList() {
   form.addEventListener("submit", function (e) {
     e.preventDefault();
+    e.stopPropagation();
     isEmpty();
     deleteFunction();
     editFunction();
