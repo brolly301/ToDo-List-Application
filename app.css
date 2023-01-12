@@ -59,12 +59,22 @@ h1 {
 #confirmAfter {
   text-decoration: line-through;
 }
+
 #task {
   text-align: left;
   margin-left: 45px;
   padding-top: 5px;
   padding-bottom: 5px;
+  padding-left: 3px;
   border: solid 1px black;
+}
+
+#task:nth-of-type(even) {
+  background-color: rgb(194, 194, 241);
+}
+
+#task:nth-of-type(odd) {
+  background-color: rgb(178, 178, 253);
 }
 
 #confirm {

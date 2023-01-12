@@ -24,11 +24,13 @@ function isEmpty() {
 
   if (inputValidation !== null && inputValidation.value === "") {
     alert("You have not entered a task. Please enter one to continue.");
+  } else if (inputValue.length >= 36) {
+    alert("Task name too long. Please enter up to 35 characters.");
   } else {
     list.appendChild(task);
-    task.innerText = `${inputValue} `;
-    task.appendChild(confirmButton());
+    task.innerText = `${inputValue}`;
     task.appendChild(deleteButton());
+    task.appendChild(confirmButton());
     task.appendChild(editButton());
     input.value = "";
   }
@@ -81,6 +83,13 @@ function editFunction() {
   for (let i = 0; i < editButton.length; i++) {
     editButton[i].onclick = function () {
       this.parentElement.contentEditable = true;
+      this.previousElementSibling.contentEditable = false;
+      this.previousElementSibling.previousElementSibling.contentEditable = false;
+      this.contentEditable = false;
+
+      editButton[i].onclick = function () {
+        this.parentElement.contentEditable = false;
+      };
     };
   }
 }
@@ -92,6 +101,8 @@ function confirmFunction() {
     confirmButton[i].onclick = function () {
       this.parentElement.style.textDecoration = "line-through";
       this.parentElement.style.backgroundColor = "green";
+      this.nextElementSibling.remove();
+      this.remove();
     };
   }
 }
