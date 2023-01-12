@@ -69,7 +69,7 @@ function deleteFunction() {
   const deleteButton = document.querySelectorAll("#delete");
   for (let i = 0; i < deleteButton.length; i++) {
     deleteButton[i].onclick = function () {
-      response = confirm("Are you sure?");
+      response = confirm("Are you sure you want to delete this task?");
       if (response) {
         this.parentElement.remove();
       }
@@ -88,7 +88,10 @@ function editFunction() {
       this.contentEditable = false;
 
       editButton[i].onclick = function () {
-        this.parentElement.contentEditable = false;
+        response = confirm("Would you like to finish editing?");
+        if (response) {
+          this.parentElement.contentEditable = false;
+        }
       };
     };
   }
@@ -106,5 +109,16 @@ function confirmFunction() {
     };
   }
 }
+
+function liArray() {
+  li = document.querySelectorAll("li");
+  const liarray = [li];
+
+  for (let i = 0; i < li.length; i++) {
+    liarray[i].appendChild;
+  }
+}
+
+liArray();
 
 createList();
