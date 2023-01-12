@@ -7,22 +7,22 @@ h1 {
   font-size: 50px;
 }
 
-#formDiv {
-  display: inline-block;
-  text-align: left;
-}
-
 #input {
-  width: 220px;
-  height: 20px;
+  position: relative;
+  left: 25px;
+  width: 350px;
+  height: 25px;
   margin-bottom: 20px;
+  border: 1px black solid;
 }
 
 #submit {
+  position: relative;
+  left: 20px;
   color: white;
   background-color: rgb(40, 40, 41);
-  height: 24px;
-  border-radius: 10%;
+  height: 29px;
+  width: 90px;
 }
 
 #submit:hover {
@@ -38,6 +38,7 @@ h1 {
   display: inline-block;
   list-style: none;
   width: 100%;
+  text-align: center;
   align-items: center;
   margin: auto;
   padding: 0;
@@ -57,4 +58,42 @@ h1 {
 
 #confirmAfter {
   text-decoration: line-through;
+}
+#task {
+  text-align: left;
+  margin-left: 45px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border: solid 1px black;
+}
+
+#confirm {
+  position: absolute;
+  left: 83%;
+  text-align: right;
+  justify-content: right;
+}
+
+#delete {
+  position: absolute;
+  left: 89%;
+  text-align: right;
+  justify-content: right;
+}
+
+#edit {
+  position: absolute;
+  left: 95%;
+  text-align: right;
+  justify-content: right;
+}
+
+#listDiv {
+  display: block;
+  text-align: left;
+  width: 490px;
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  /* word-wrap: break-word; */
 }
