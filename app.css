@@ -47,7 +47,6 @@ body {
   align-items: center;
   margin: auto;
   padding: 0;
-  padding-bottom: 50px;
 }
 
 #delete:hover {
@@ -138,4 +137,22 @@ body {
 h3 {
   position: relative;
   top: -22px;
+}
+
+#completedList {
+  position: relative;
+  display: inline-block;
+  list-style: none;
+  width: 100%;
+  text-align: center;
+  align-items: center;
+  margin: auto;
+  padding: 0;
+  padding-bottom: 50px;
+}
+
+#completedTitle {
+  position: relative;
+  text-align: center;
+  left: 17px;
 }

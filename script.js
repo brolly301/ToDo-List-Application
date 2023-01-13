@@ -11,7 +11,7 @@ function createList() {
     isEmpty();
     deleteFunction();
     editFunction();
-    confirmFunction();
+    confirmFunction()
   });
 }
 
@@ -32,7 +32,6 @@ function isEmpty() {
     task.appendChild(editButton());
     input.value = "";
   }
-
 }
 
 //Creates delete icon
@@ -107,7 +106,6 @@ function editFunction() {
   }
 }
 
-
 function editConfirmFunction(edit) {
   const editConfirmButton = document.querySelectorAll("#check");
   for (let i = 0; i < editConfirmButton.length; i++) {
@@ -133,31 +131,16 @@ function confirmFunction() {
         this.parentElement.style.textDecoration = "line-through";
         this.parentElement.style.backgroundColor = "green";
         this.nextElementSibling.remove();
+        completeList(this)
         this.remove();
       }
     };
   }
 }
 
-function confirmFunctionTest() {
-  const confirmButton = document.querySelectorAll("#confirm");
-  for (let i = 0; i < confirmButton.length; i++) {
-    confirmButton[i].onclick = function () {
-      response = confirm("Are you sure you want to mark this task as complete?")
-      if (response) {
-
-        const completedTask = document.createElement('li')
-        completedTask.id = 'completedTask'
-        const list = document.querySelector("#completedList");
-        this.parentElement.style.textDecoration = "line-through";
-        this.parentElement.style.backgroundColor = "green";
-        this.nextElementSibling.remove();
-        this.remove();
-        list.appendChild(this.parentElement)
-
-      }
-    };
-  }
+function completeList(task) {
+  document.getElementById("completedList").appendChild(task.parentNode);
+  document.getElementById("completedTitle").innerHTML = "Completed Tasks"
 }
 
 createList();
