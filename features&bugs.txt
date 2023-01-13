@@ -1,0 +1,7 @@
+Features:
+1. Put the LIS into an array to check if the task has already been added 
+2. Instructions with drop down button
+3. Put completed items into a list below the original list
+
+Bugs:
+1. Text overflows onto icons before taking a new line`  

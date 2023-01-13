@@ -24,8 +24,6 @@ function isEmpty() {
 
   if (inputValidation !== null && inputValidation.value === "") {
     alert("You have not entered a task. Please enter one to continue.");
-  } else if (inputValue.length >= 36) {
-    alert("Task name too long. Please enter up to 35 characters.");
   } else {
     list.appendChild(task);
     task.innerText = `${inputValue}`;
@@ -86,11 +84,12 @@ function editFunction() {
       this.previousElementSibling.contentEditable = false;
       this.previousElementSibling.previousElementSibling.contentEditable = false;
       this.contentEditable = false;
-
-      editButton[i].onclick = function () {
-        response = confirm("Would you like to finish editing?");
+      this.parentElement.style.backgroundColor = "rgb(218, 218, 218)";
+      editButton[i].ondblclick = function () {
+        response = confirm("Are you sure you are finished editing this task?");
         if (response) {
           this.parentElement.contentEditable = false;
+          this.parentElement.style.backgroundColor = "";
         }
       };
     };
@@ -111,12 +110,13 @@ function confirmFunction() {
 }
 
 function liArray() {
-  li = document.querySelectorAll("li");
-  const liarray = [li];
+  li = document.querySelectorAll("#task");
+  const liarray = [];
 
   for (let i = 0; i < li.length; i++) {
-    liarray[i].appendChild;
+    liarray[i].push(li);
   }
+  console.log(liarray);
 }
 
 liArray();

@@ -1,6 +1,9 @@
 body {
+  position: relative;
+  top: 40px;
   background-color: rgb(146, 146, 241);
   font-family: "Open Sans";
+  transform: scale(1.1);
 }
 
 #toDo {
@@ -44,6 +47,7 @@ body {
   align-items: center;
   margin: auto;
   padding: 0;
+  padding-bottom: 50px;
 }
 
 #delete:hover {
@@ -69,6 +73,7 @@ body {
   padding-bottom: 5px;
   padding-left: 3px;
   border: solid 1px black;
+  word-break: break-all;
 }
 
 #task:nth-of-type(even) {
@@ -79,23 +84,23 @@ body {
   background-color: rgb(178, 178, 253);
 }
 
-#confirm {
+#edit {
   position: absolute;
-  left: 83%;
+  left: 82%;
   text-align: right;
   justify-content: right;
 }
 
 #delete {
   position: absolute;
-  left: 89%;
+  left: 88%;
   text-align: right;
   justify-content: right;
 }
 
-#edit {
+#confirm {
   position: absolute;
-  left: 95%;
+  left: 94%;
   text-align: right;
   justify-content: right;
 }
@@ -113,7 +118,7 @@ body {
 }
 
 #hr {
-  border: 1px black solid;
+  border: 0.8px black solid;
   position: relative;
   top: -20px;
   width: 430px;
