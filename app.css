@@ -62,6 +62,10 @@ body {
   color: green;
 }
 
+#check:hover {
+  color: green;
+}
+
 #confirmAfter {
   text-decoration: line-through;
 }
@@ -101,6 +105,13 @@ body {
 #confirm {
   position: absolute;
   left: 94%;
+  text-align: right;
+  justify-content: right;
+}
+
+#check {
+  position: absolute;
+  left: 3%;
   text-align: right;
   justify-content: right;
 }

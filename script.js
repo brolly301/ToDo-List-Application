@@ -57,8 +57,16 @@ function confirmButton() {
 function editButton() {
   icon = document.createElement("i");
   icon.className = "material-symbols-outlined";
-  icon.innerHTML = "edit_note";
+  icon.innerHTML = "edit";
   icon.id = "edit";
+  return icon;
+}
+
+function editConfirmButton() {
+  icon = document.createElement("i");
+  icon.className = "material-symbols-outlined";
+  icon.innerHTML = "check";
+  icon.id = "check";
   return icon;
 }
 
@@ -79,19 +87,33 @@ function deleteFunction() {
 function editFunction() {
   const editButton = document.querySelectorAll("#edit");
   for (let i = 0; i < editButton.length; i++) {
-    editButton[i].onclick = function () {
-      this.parentElement.contentEditable = true;
-      this.previousElementSibling.contentEditable = false;
-      this.previousElementSibling.previousElementSibling.contentEditable = false;
-      this.contentEditable = false;
-      this.parentElement.style.backgroundColor = "rgb(218, 218, 218)";
-      editButton[i].ondblclick = function () {
-        response = confirm("Are you sure you are finished editing this task?");
-        if (response) {
-          this.parentElement.contentEditable = false;
-          this.parentElement.style.backgroundColor = "";
-        }
-      };
+    editButton[i].onclick = function (e) {
+      response = confirm("Are you sure you are want to edit this task?");
+      if (response) {
+        this.parentElement.contentEditable = true;
+        this.previousElementSibling.contentEditable = false;
+        this.previousElementSibling.previousElementSibling.contentEditable = false;
+        this.contentEditable = false;
+        this.parentElement.style.backgroundColor = "rgb(218, 218, 218)";
+        this.parentElement.appendChild(
+          editConfirmButton()
+        ).contentEditable = false;
+      }
+      editConfirmFunction();
+    };
+  }
+  return editButton;
+}
+
+function editConfirmFunction() {
+  const editConfirmButton = document.querySelectorAll("#check");
+  for (let i = 0; i < editConfirmButton.length; i++) {
+    editConfirmButton[i].onclick = function (e) {
+      response = confirm("Are you sure you are finished editing this task?");
+      if (response) {
+        this.parentElement.contentEditable = false;
+        this.parentElement.style.backgroundColor = "";
+      }
     };
   }
 }
@@ -108,17 +130,5 @@ function confirmFunction() {
     };
   }
 }
-
-function liArray() {
-  li = document.querySelectorAll("#task");
-  const liarray = [];
-
-  for (let i = 0; i < li.length; i++) {
-    liarray[i].push(li);
-  }
-  console.log(liarray);
-}
-
-liArray();
 
 createList();
