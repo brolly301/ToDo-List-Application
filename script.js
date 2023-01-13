@@ -1,6 +1,6 @@
 const form = document.querySelector("form");
 const input = document.querySelector("input");
-const list = document.querySelector("ul");
+const list = document.querySelector("#ul");
 const inputValidation = document.getElementById("input");
 
 //Creates the event listener for the form and the submit button and holds all the functions
@@ -32,6 +32,7 @@ function isEmpty() {
     task.appendChild(editButton());
     input.value = "";
   }
+
 }
 
 //Creates delete icon
@@ -50,6 +51,7 @@ function confirmButton() {
   icon.className = "material-symbols-outlined";
   icon.innerHTML = "check_circle";
   icon.id = "confirm";
+  icon.contentEditable = false;
   return icon;
 }
 
@@ -59,6 +61,7 @@ function editButton() {
   icon.className = "material-symbols-outlined";
   icon.innerHTML = "edit";
   icon.id = "edit";
+  icon.contentEditable = false;
   return icon;
 }
 
@@ -67,6 +70,7 @@ function editConfirmButton() {
   icon.className = "material-symbols-outlined";
   icon.innerHTML = "check";
   icon.id = "check";
+  icon.contentEditable = false;
   return icon;
 }
 
@@ -89,23 +93,22 @@ function editFunction() {
   for (let i = 0; i < editButton.length; i++) {
     editButton[i].onclick = function (e) {
       response = confirm("Are you sure you are want to edit this task?");
+
       if (response) {
         this.parentElement.contentEditable = true;
-        this.previousElementSibling.contentEditable = false;
-        this.previousElementSibling.previousElementSibling.contentEditable = false;
-        this.contentEditable = false;
         this.parentElement.style.backgroundColor = "rgb(218, 218, 218)";
         this.parentElement.appendChild(
           editConfirmButton()
         ).contentEditable = false;
+        this.style.display = 'none'
+        editConfirmFunction(this);
       }
-      editConfirmFunction();
     };
   }
-  return editButton;
 }
 
-function editConfirmFunction() {
+
+function editConfirmFunction(edit) {
   const editConfirmButton = document.querySelectorAll("#check");
   for (let i = 0; i < editConfirmButton.length; i++) {
     editConfirmButton[i].onclick = function (e) {
@@ -113,6 +116,8 @@ function editConfirmFunction() {
       if (response) {
         this.parentElement.contentEditable = false;
         this.parentElement.style.backgroundColor = "";
+        this.remove();
+        edit.style.display = 'inline-block'
       }
     };
   }
@@ -123,10 +128,34 @@ function confirmFunction() {
   const confirmButton = document.querySelectorAll("#confirm");
   for (let i = 0; i < confirmButton.length; i++) {
     confirmButton[i].onclick = function () {
-      this.parentElement.style.textDecoration = "line-through";
-      this.parentElement.style.backgroundColor = "green";
-      this.nextElementSibling.remove();
-      this.remove();
+      response = confirm("Are you sure you want to mark this task as complete?")
+      if (response) {
+        this.parentElement.style.textDecoration = "line-through";
+        this.parentElement.style.backgroundColor = "green";
+        this.nextElementSibling.remove();
+        this.remove();
+      }
+    };
+  }
+}
+
+function confirmFunctionTest() {
+  const confirmButton = document.querySelectorAll("#confirm");
+  for (let i = 0; i < confirmButton.length; i++) {
+    confirmButton[i].onclick = function () {
+      response = confirm("Are you sure you want to mark this task as complete?")
+      if (response) {
+
+        const completedTask = document.createElement('li')
+        completedTask.id = 'completedTask'
+        const list = document.querySelector("#completedList");
+        this.parentElement.style.textDecoration = "line-through";
+        this.parentElement.style.backgroundColor = "green";
+        this.nextElementSibling.remove();
+        this.remove();
+        list.appendChild(this.parentElement)
+
+      }
     };
   }
 }
