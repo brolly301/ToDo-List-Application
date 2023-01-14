@@ -49,6 +49,10 @@ body {
   padding: 0;
 }
 
+#undo:hover {
+  color: red;
+}
+
 #delete:hover {
   color: red;
 }
@@ -95,6 +99,13 @@ body {
 }
 
 #delete {
+  position: absolute;
+  left: 88%;
+  text-align: right;
+  justify-content: right;
+}
+
+#undo {
   position: absolute;
   left: 88%;
   text-align: right;

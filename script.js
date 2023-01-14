@@ -13,8 +13,11 @@ function createList() {
     isEmpty();
     deleteFunction();
     editFunction();
-    confirmFunction()
-    clearList()
+    confirmFunction();
+    undoFunction()
+
+    clearList();
+
   });
 }
 
@@ -78,6 +81,15 @@ function editConfirmButton() {
   return icon;
 }
 
+function undoButton() {
+  icon = document.createElement("i");
+  icon.className = "material-symbols-outlined";
+  icon.innerHTML = "undo";
+  icon.id = "undo";
+  icon.contentEditable = false;
+  return icon;
+}
+
 //Deletes the task from the list
 function deleteFunction() {
   const deleteButton = document.querySelectorAll("#delete");
@@ -97,7 +109,6 @@ function editFunction() {
   for (let i = 0; i < editButton.length; i++) {
     editButton[i].onclick = function (e) {
       response = confirm("Are you sure you are want to edit this task?");
-
       if (response) {
         this.parentElement.contentEditable = true;
         this.parentElement.style.backgroundColor = "rgb(218, 218, 218)";
@@ -136,7 +147,24 @@ function confirmFunction() {
         this.parentElement.style.textDecoration = "line-through";
         this.parentElement.style.backgroundColor = "green";
         this.nextElementSibling.remove();
+        this.previousElementSibling.remove();
         completeList(this)
+        this.parentElement.appendChild(undoButton())
+        this.remove();
+      }
+    };
+  }
+}
+
+function undoFunction() {
+  const undoButton = document.getElementById("#undo");
+  for (let i = 0; i <= undoButton.length; i++) {
+    undoButton[i].onclick = function () {
+      response = confirm("Are you sure you want to mark this task as complete?")
+      if (response) {
+        this.parentElement.style.textDecoration = "";
+        this.parentElement.style.backgroundColor = "";
+        undoList(this)
         this.remove();
       }
     };
@@ -146,6 +174,11 @@ function confirmFunction() {
 function completeList(task) {
   document.getElementById("completedList").appendChild(task.parentNode);
   document.getElementById("completedTitle").innerHTML = "Completed Tasks"
+}
+
+function undoList(task) {
+  document.getElementById("ul").appendChild(task.parentNode);
+  document.getElementById("completedTitle").innerHTML = ""
 }
 
 function clearList() {
