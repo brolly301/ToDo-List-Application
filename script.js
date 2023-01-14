@@ -2,9 +2,11 @@ const form = document.querySelector("form");
 const input = document.querySelector("input");
 const list = document.querySelector("#ul");
 const inputValidation = document.getElementById("input");
+const clearButton = document.getElementById("clear");
 
 //Creates the event listener for the form and the submit button and holds all the functions
 function createList() {
+
   form.addEventListener("submit", function (e) {
     e.preventDefault();
     e.stopPropagation();
@@ -12,6 +14,7 @@ function createList() {
     deleteFunction();
     editFunction();
     confirmFunction()
+    clearList()
   });
 }
 
@@ -26,11 +29,13 @@ function isEmpty() {
     alert("You have not entered a task. Please enter one to continue.");
   } else {
     list.appendChild(task);
-    task.innerText = `${inputValue}`;
+    task.innerHTML = `${inputValue}`;
     task.appendChild(deleteButton());
     task.appendChild(confirmButton());
     task.appendChild(editButton());
+    tArray(task)
     input.value = "";
+    clearButton.style.display = 'inline-block'
   }
 }
 
@@ -141,6 +146,33 @@ function confirmFunction() {
 function completeList(task) {
   document.getElementById("completedList").appendChild(task.parentNode);
   document.getElementById("completedTitle").innerHTML = "Completed Tasks"
+}
+
+function clearList() {
+  const clearButton = document.querySelector('#clear')
+  clearButton.onclick = function () {
+    response = confirm('Are you sure you want to clear all your tasks?')
+    if (response) {
+      document.getElementById("ul").innerHTML = "";
+      document.getElementById("completedList").innerHTML = "";
+      document.getElementById("completedTitle").innerHTML = "";
+      this.style.display = 'none'
+    }
+  }
+}
+
+function taskArray() {
+  const task = document.querySelectorAll('li')
+  const tArray = []
+  for (let i = 0; i < task.length; i++) {
+    tArray.push(task[i].innerText)
+  }
+}
+
+function tArray(task) {
+  const tArray = []
+  tArray.push(task.innerText)
+  tArray.forEach(element => console.log(element))
 }
 
 createList();

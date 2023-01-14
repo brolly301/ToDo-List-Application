@@ -118,7 +118,7 @@ body {
 #listDiv {
   position: relative;
   display: block;
-  text-align: left;
+  text-align: center;
   width: 490px;
   height: 300px;
   margin-left: auto;
@@ -155,4 +155,19 @@ h3 {
   position: relative;
   text-align: center;
   left: 17px;
+}
+
+#clear:hover {
+  background-color: rgb(229, 65, 65);
+}
+
+#clear {
+  display: none;
+  position: relative;
+  color: white;
+  background-color: rgb(40, 40, 41);
+  height: 34px;
+  width: 90px;
+  margin-top: 15px;
+  left: 21px;
 }

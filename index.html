@@ -20,19 +20,24 @@
         <hr id="hr">
         <h3>Enter A New Task:</h3>
         <div>
-            <form action="/nowhere">
+            <form id="toDoForm" action="/nowhere">
                 <input placeholder="Task.." type="text" name="input" id="input">
                 <span><button id="submit">Add Task</button></span>
                 <div id="listDiv">
                     <ul id="ul"></ul>
+                    <span><button type="button" id="clear">Clear Tasks</button></span>
                     <h2 id="completedTitle"></h2>
                     <ul id="completedList"></ul>
                 </div>
+
+
             </form>
+
         </div>
     </div>
     <script src="script.js">
     </script>
 </body>
+
 
 </html>
