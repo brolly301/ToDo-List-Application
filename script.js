@@ -6,7 +6,6 @@ const clearButton = document.getElementById("clear");
 
 //Creates the event listener for the form and the submit button and holds all the functions
 function createList() {
-
   form.addEventListener("submit", function (e) {
     e.preventDefault();
     e.stopPropagation();
@@ -38,6 +37,9 @@ function isEmpty() {
     input.value = "";
     clearButton.style.display = 'inline-block'
     document.getElementById("newTasks").style.display = 'block'
+    if (document.querySelector('#taskRemove') !== null) {
+      document.querySelector('#taskRemove').remove()
+    }
   }
 }
 
@@ -177,6 +179,9 @@ function undoFunction() {
         this.previousElementSibling.previousElementSibling.previousElementSibling.style.display = 'inline-block'
         undoList(this)
         this.style.display = 'none';
+        if (document.querySelector('#taskRemove') !== null) {
+          document.querySelector('#taskRemove').remove()
+        }
       }
     };
   }
@@ -186,6 +191,13 @@ function undoFunction() {
 function completeList(task) {
   document.getElementById("completedList").appendChild(task.parentNode);
   document.getElementById("completedTitle").style.display = 'block'
+  if (document.getElementById("ul").getElementsByTagName("li").length < 1) {
+    // document.getElementById("newTasks").style.display = 'none'
+    enterTask = document.createElement('li')
+    enterTask.id = 'taskRemove'
+    enterTask.innerHTML = 'No New Tasks..'
+    list.appendChild(enterTask)
+  }
 }
 
 //Appends the completed task back to the original task list
@@ -210,27 +222,5 @@ function clearList() {
     }
   }
 }
-
-
-//TESTING
-function addNoNewTasks() {
-  if (document.getElementById("ul").getElementsByTagName("li").length < 1) {
-    enterTask = document.createElement('li')
-    enterTask.id = 'taskRemove'
-    enterTask.innerHTML = 'No New Tasks..'
-    list.appendChild(enterTask)
-    clearButton.style.display = 'none'
-  }
-}
-
-function removeNoNewTasks() {
-  if (document.getElementById("ul").getElementsByTagName("li").length > 0) {
-    const enterTask = document.querySelectorAll('#taskRemove')
-    enterTask.innerHTML = ''
-
-  }
-}
-
-
 
 createList();
