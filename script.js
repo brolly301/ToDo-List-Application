@@ -99,10 +99,6 @@ function deleteFunction() {
       response = confirm("Are you sure you want to delete this task?");
       if (response) {
         this.parentElement.remove();
-        if (document.getElementById("ul").getElementsByTagName("li").length < 1) {
-          document.getElementById("newTasks").style.display = 'none'
-          clearButton.style.display = 'none'
-        }
       }
     };
   }
@@ -208,10 +204,33 @@ function clearList() {
     if (response) {
       document.getElementById("ul").innerHTML = "";
       document.getElementById("completedList").innerHTML = "";
-      document.getElementById("completedTitle").innerHTML = "";
+      document.getElementById("completedTitle").style.display = "none";
+      document.getElementById("newTasks").style.display = "none";
       this.style.display = 'none'
     }
   }
 }
+
+
+//TESTING
+function addNoNewTasks() {
+  if (document.getElementById("ul").getElementsByTagName("li").length < 1) {
+    enterTask = document.createElement('li')
+    enterTask.id = 'taskRemove'
+    enterTask.innerHTML = 'No New Tasks..'
+    list.appendChild(enterTask)
+    clearButton.style.display = 'none'
+  }
+}
+
+function removeNoNewTasks() {
+  if (document.getElementById("ul").getElementsByTagName("li").length > 0) {
+    const enterTask = document.querySelectorAll('#taskRemove')
+    enterTask.innerHTML = ''
+
+  }
+}
+
+
 
 createList();

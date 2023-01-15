@@ -15,7 +15,7 @@ body {
   left: 3px;
   width: 350px;
   height: 30px;
-  margin-bottom: 20px;
+  margin-bottom: 8px;
   border: 1px black solid;
   top: -22px;
 }
@@ -74,6 +74,16 @@ body {
 }
 
 #task {
+  text-align: left;
+  margin-left: 45px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 3px;
+  border: solid 1px black;
+  word-break: break-all;
+}
+
+#taskRemove {
   text-align: left;
   margin-left: 45px;
   padding-top: 5px;
@@ -169,7 +179,9 @@ h3 {
   text-align: center;
   left: 17px;
   border: 1px solid black;
-  display: none
+  display: none;
+  margin: 0px 17px;
+  margin-left: 28px;
 }
 
 #newTasks {
@@ -177,7 +189,9 @@ h3 {
   text-align: center;
   left: 17px;
   border: 1px solid black;
-  display: none
+  display: none;
+  margin: 0px 17px;
+  margin-left: 28px;
 }
 
 #clear:hover {
