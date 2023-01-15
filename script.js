@@ -8,7 +8,6 @@ const clearButton = document.getElementById("clear");
 function createList() {
   form.addEventListener("submit", function (e) {
     e.preventDefault();
-    e.stopPropagation();
     isEmpty();
     deleteFunction();
     editFunction();
@@ -192,7 +191,6 @@ function completeList(task) {
   document.getElementById("completedList").appendChild(task.parentNode);
   document.getElementById("completedTitle").style.display = 'block'
   if (document.getElementById("ul").getElementsByTagName("li").length < 1) {
-    // document.getElementById("newTasks").style.display = 'none'
     enterTask = document.createElement('li')
     enterTask.id = 'taskRemove'
     enterTask.innerHTML = 'No New Tasks..'
