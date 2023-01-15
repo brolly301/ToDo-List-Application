@@ -15,9 +15,7 @@ function createList() {
     editFunction();
     confirmFunction();
     undoFunction()
-
     clearList();
-
   });
 }
 
@@ -36,13 +34,13 @@ function isEmpty() {
     task.appendChild(deleteButton());
     task.appendChild(confirmButton());
     task.appendChild(editButton());
-    tArray(task)
+    task.appendChild(undoButton());
     input.value = "";
     clearButton.style.display = 'inline-block'
   }
 }
 
-//Creates delete icon
+//Creating delete button
 function deleteButton() {
   icon = document.createElement("i");
   icon.className = "material-symbols-outlined";
@@ -52,7 +50,7 @@ function deleteButton() {
   return icon;
 }
 
-//Creates confirm icon
+//Creating confirm button
 function confirmButton() {
   icon = document.createElement("i");
   icon.className = "material-symbols-outlined";
@@ -62,7 +60,7 @@ function confirmButton() {
   return icon;
 }
 
-//Creates edit icon
+//Creating edit button
 function editButton() {
   icon = document.createElement("i");
   icon.className = "material-symbols-outlined";
@@ -72,6 +70,7 @@ function editButton() {
   return icon;
 }
 
+//Creating the edit confirm button 
 function editConfirmButton() {
   icon = document.createElement("i");
   icon.className = "material-symbols-outlined";
@@ -81,6 +80,7 @@ function editConfirmButton() {
   return icon;
 }
 
+//Creating the undo button 
 function undoButton() {
   icon = document.createElement("i");
   icon.className = "material-symbols-outlined";
@@ -122,6 +122,7 @@ function editFunction() {
   }
 }
 
+//Confirms if the user is finished editing while in edit mode
 function editConfirmFunction(edit) {
   const editConfirmButton = document.querySelectorAll("#check");
   for (let i = 0; i < editConfirmButton.length; i++) {
@@ -137,7 +138,7 @@ function editConfirmFunction(edit) {
   }
 }
 
-//Confirms the task and updates its CSS
+//Confirms the task, updates its CSS and stores it in the completed section
 function confirmFunction() {
   const confirmButton = document.querySelectorAll("#confirm");
   for (let i = 0; i < confirmButton.length; i++) {
@@ -146,24 +147,28 @@ function confirmFunction() {
       if (response) {
         this.parentElement.style.textDecoration = "line-through";
         this.parentElement.style.backgroundColor = "green";
+        this.nextElementSibling.nextElementSibling.style.display = 'inline-block'
         this.nextElementSibling.remove();
         this.previousElementSibling.remove();
         completeList(this)
-        this.parentElement.appendChild(undoButton())
         this.remove();
       }
     };
   }
 }
 
+//Reverts the completed task back to the original task list 
 function undoFunction() {
-  const undoButton = document.getElementById("#undo");
-  for (let i = 0; i <= undoButton.length; i++) {
+  const undoButton = document.querySelectorAll("#undo");
+  for (let i = 0; i < undoButton.length; i++) {
     undoButton[i].onclick = function () {
-      response = confirm("Are you sure you want to mark this task as complete?")
+      response = confirm("Are you sure you want to mark this task as undo?")
       if (response) {
         this.parentElement.style.textDecoration = "";
         this.parentElement.style.backgroundColor = "";
+        this.parentElement.appendChild(deleteButton())
+        this.parentElement.appendChild(editButton())
+        this.parentElement.appendChild(confirmButton())
         undoList(this)
         this.remove();
       }
@@ -171,16 +176,20 @@ function undoFunction() {
   }
 }
 
+//Appends the completed task to the new task list 
 function completeList(task) {
   document.getElementById("completedList").appendChild(task.parentNode);
   document.getElementById("completedTitle").innerHTML = "Completed Tasks"
 }
 
+//Appends the completed task back to the original task list
 function undoList(task) {
   document.getElementById("ul").appendChild(task.parentNode);
   document.getElementById("completedTitle").innerHTML = ""
+
 }
 
+//Deletes all the contents of both the completed and uncompleted task list
 function clearList() {
   const clearButton = document.querySelector('#clear')
   clearButton.onclick = function () {
@@ -192,20 +201,6 @@ function clearList() {
       this.style.display = 'none'
     }
   }
-}
-
-function taskArray() {
-  const task = document.querySelectorAll('li')
-  const tArray = []
-  for (let i = 0; i < task.length; i++) {
-    tArray.push(task[i].innerText)
-  }
-}
-
-function tArray(task) {
-  const tArray = []
-  tArray.push(task.innerText)
-  tArray.forEach(element => console.log(element))
 }
 
 createList();

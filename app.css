@@ -110,6 +110,7 @@ body {
   left: 88%;
   text-align: right;
   justify-content: right;
+  display: none;
 }
 
 #confirm {
