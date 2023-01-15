@@ -153,10 +153,10 @@ function confirmFunction() {
         this.parentElement.style.textDecoration = "line-through";
         this.parentElement.style.backgroundColor = "green";
         this.nextElementSibling.nextElementSibling.style.display = 'inline-block'
-        this.nextElementSibling.remove();
-        this.previousElementSibling.remove();
+        this.nextElementSibling.style.display = 'none'
+        this.previousElementSibling.style.display = 'none'
         completeList(this)
-        this.remove();
+        this.style.display = 'none';
       }
     };
   }
@@ -171,11 +171,11 @@ function undoFunction() {
       if (response) {
         this.parentElement.style.textDecoration = "";
         this.parentElement.style.backgroundColor = "";
-        this.parentElement.appendChild(deleteButton())
-        this.parentElement.appendChild(editButton())
-        this.parentElement.appendChild(confirmButton())
+        this.previousElementSibling.style.display = 'inline-block'
+        this.previousElementSibling.previousElementSibling.style.display = 'inline-block'
+        this.previousElementSibling.previousElementSibling.previousElementSibling.style.display = 'inline-block'
         undoList(this)
-        this.remove();
+        this.style.display = 'none';
       }
     };
   }
@@ -190,8 +190,9 @@ function completeList(task) {
 //Appends the completed task back to the original task list
 function undoList(task) {
   document.getElementById("ul").appendChild(task.parentNode);
-  console.log(document.getElementById("completedList").getElementsByTagName("li").length)
-
+  if (document.getElementById("completedList").getElementsByTagName("li").length < 1) {
+    document.getElementById("completedTitle").innerHTML = ''
+  }
 }
 
 //Deletes all the contents of both the completed and uncompleted task list
