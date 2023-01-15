@@ -116,6 +116,8 @@ function editFunction() {
           editConfirmButton()
         ).contentEditable = false;
         this.style.display = 'none'
+        this.previousSibling.style.display = 'none'
+        this.previousSibling.previousSibling.style.display = 'none'
         editConfirmFunction(this);
       }
     };
@@ -131,8 +133,11 @@ function editConfirmFunction(edit) {
       if (response) {
         this.parentElement.contentEditable = false;
         this.parentElement.style.backgroundColor = "";
+        deleteButton().remove()
         this.remove();
         edit.style.display = 'inline-block'
+        edit.previousSibling.style.display = 'inline-block'
+        edit.previousSibling.previousSibling.style.display = 'inline-block'
       }
     };
   }
@@ -185,7 +190,7 @@ function completeList(task) {
 //Appends the completed task back to the original task list
 function undoList(task) {
   document.getElementById("ul").appendChild(task.parentNode);
-  document.getElementById("completedTitle").innerHTML = ""
+  console.log(document.getElementById("completedList").getElementsByTagName("li").length)
 
 }
 
