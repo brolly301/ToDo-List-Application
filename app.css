@@ -168,6 +168,16 @@ h3 {
   position: relative;
   text-align: center;
   left: 17px;
+  border: 1px solid black;
+  display: none
+}
+
+#newTasks {
+  position: relative;
+  text-align: center;
+  left: 17px;
+  border: 1px solid black;
+  display: none
 }
 
 #clear:hover {

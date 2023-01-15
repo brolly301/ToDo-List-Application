@@ -37,6 +37,7 @@ function isEmpty() {
     task.appendChild(undoButton());
     input.value = "";
     clearButton.style.display = 'inline-block'
+    document.getElementById("newTasks").style.display = 'block'
   }
 }
 
@@ -98,6 +99,10 @@ function deleteFunction() {
       response = confirm("Are you sure you want to delete this task?");
       if (response) {
         this.parentElement.remove();
+        if (document.getElementById("ul").getElementsByTagName("li").length < 1) {
+          document.getElementById("newTasks").style.display = 'none'
+          clearButton.style.display = 'none'
+        }
       }
     };
   }
@@ -184,14 +189,14 @@ function undoFunction() {
 //Appends the completed task to the new task list 
 function completeList(task) {
   document.getElementById("completedList").appendChild(task.parentNode);
-  document.getElementById("completedTitle").innerHTML = "Completed Tasks"
+  document.getElementById("completedTitle").style.display = 'block'
 }
 
 //Appends the completed task back to the original task list
 function undoList(task) {
   document.getElementById("ul").appendChild(task.parentNode);
   if (document.getElementById("completedList").getElementsByTagName("li").length < 1) {
-    document.getElementById("completedTitle").innerHTML = ''
+    document.getElementById("completedTitle").style.display = 'none'
   }
 }
 
