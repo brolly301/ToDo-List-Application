@@ -202,7 +202,6 @@ function clearList() {
     if (response) {
       document.getElementById("ul").innerHTML = "";
       document.getElementById("completedList").innerHTML = "";
-      document.getElementById("completedTitle").innerHTML = "";
       this.style.display = 'none'
     }
   }

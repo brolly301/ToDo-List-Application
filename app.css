@@ -47,6 +47,7 @@ body {
   align-items: center;
   margin: auto;
   padding: 0;
+  padding-bottom: 27.5px;
 }
 
 #undo:hover {
@@ -74,6 +75,7 @@ body {
 }
 
 #task {
+  position: relative;
   text-align: left;
   margin-left: 45px;
   padding-top: 5px;
@@ -81,6 +83,7 @@ body {
   padding-left: 3px;
   border: solid 1px black;
   word-break: break-all;
+  top: -53px
 }
 
 #task:nth-of-type(even) {
@@ -160,13 +163,19 @@ h3 {
   align-items: center;
   margin: auto;
   padding: 0;
-  padding-bottom: 50px;
+  bottom: 70px
 }
 
 #completedTitle {
   position: relative;
+  bottom: 102px;
+  background-color: rgb(146, 146, 241);
+  border: 1px solid black;
   text-align: center;
-  left: 17px;
+  left: 0.3px;
+  margin-left: 45px;
+  padding: 6px;
+  font-size: 20px;
 }
 
 #clear:hover {
@@ -179,7 +188,21 @@ h3 {
   color: white;
   background-color: rgb(40, 40, 41);
   height: 34px;
-  width: 90px;
+  width: 110px;
   margin-top: 15px;
-  left: 21px;
+  left: 18px;
+  bottom: 120px
+}
+
+#newTasks {
+  position: relative;
+  bottom: 32px;
+  background-color: rgb(146, 146, 241);
+  border: 1px solid black;
+  text-align: center;
+  left: 0.3px;
+  margin-bottom: 16px;
+  margin-left: 45px;
+  padding: 6px;
+  font-size: 20px;
 }
